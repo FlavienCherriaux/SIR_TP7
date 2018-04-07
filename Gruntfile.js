@@ -76,7 +76,7 @@ module.exports = function (grunt) {
         livereload: 35729
       },
       proxies: [{
-        context: '/opower', // the context of the data service
+        context: '/opower/api', // the context of the data service
         host: 'localhost', // wherever the data service is running
         port: 8181 // the port that the data service is running on
       }],

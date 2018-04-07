@@ -1,0 +1,33 @@
+<div ng-controller="HomeCtrl">
+	<ul class="list-group">
+		<a href="javascript:void(0);" class="list-group-item" ng-repeat="home in homes" ng-click="displayDetails(home.id)">Maison n°{{home.id}}</a>
+	</ul>
+
+	<div ng-show="home != null && home != undefined">
+		<b>Maison n°{{home.id}}</b> - {{home.taille}} m&sup2; - {{home.nbChambres}} chambres - Propriétaire : {{home.person.nom}} {{home.person.prenom}}
+	</div>
+</div>
+
+	<hr/>
+
+<div ng-controller="HomeAdd">
+	<form method="POST" action="/opower/api/home">
+		<h4>Ajouter une maison</h4>
+		<div class="form-group">
+			<label>Taille (en m&sup2;)</label>
+			<input type="number" name="taille" ng-model="taille" class="form-control" min="1"/>
+		</div>
+		<div class="form-group">
+			<label>Nombre de chambres</label>
+			<input type="number" name="nbChambres" ng-model="nbChambres" class="form-control" min="1"/>
+		</div>
+		<div class="form-group">
+			<label>Propriétaire</label>
+			<select name="idPerson" ng-model="idPerson" class="form-control">
+				<option ng-repeat="person in persons" value="{{person.id}}">{{person.nom}} {{person.prenom}}</option>
+			</select>
+		</div>
+
+		<button type="submit" class="btn btn-success">OK</button>
+	</form>
+</div>
